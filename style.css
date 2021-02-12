@@ -252,13 +252,40 @@ td.expense {
     margin-top: 0;
 }
 
-input {
+input,
+select {
     border: none;
     border-radius: .2rem;
 
     padding: .8rem;
 
     width: 100%;
+
+    background: white;
+    outline: none;
+}
+
+select {
+    color: #777;
+}
+
+.options-icons {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 550;
+    font-size: 14px;
+    content: 
+        '\f03a'
+        '\f1eb'
+        '\f5ca'
+        '\f015'
+        '\f2e7'
+        '\f553'
+        '\f47d'
+        '\f095'
+        '\f5e4'
+        '\f155'
+        '\f2b5'
+    ;
 }
 
 .input-group {

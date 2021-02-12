@@ -83,6 +83,7 @@ const DOM = {
         const html = `
             <td class="description">${transaction.description}</td>
             <td class="${CssClass}">${amount}</td>
+            <td class="category">${transaction.category}</td>
             <td class="date">${transaction.date}</td>
             <td>
                 <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
@@ -138,33 +139,36 @@ const Utils = {
 
 const Form = {
     description: document.querySelector('#description'),
+    category: document.querySelector('#category'),
     amount: document.querySelector('#amount'),
     date: document.querySelector('#date'),
 
     getValues() {
         return {
             description: Form.description.value,
+            category: Form.category.value,
             amount:  Form.amount.value,
             date:  Form.date.value
         }
     },
 
     validateFields() {
-        const { description, amount, date } = Form.getValues()
+        const { description, category, amount, date } = Form.getValues()
 
-        if (description.trim() === ""|| amount.trim() === "" || date.trim() === "") {
+        if (description.trim() === ""|| category.trim() === ""|| amount.trim() === "" || date.trim() === "") {
             throw new Error("Por favor preencha todos os campos")
         }
     },
 
     formatValues() {
-        let { description, amount, date } = Form.getValues()
+        let { description, category, amount, date } = Form.getValues()
 
         amount = Utils.formatAmount(amount)
         date = Utils.formatDate(date)
 
         return {
             description,
+            category,
             amount,
             date
         }
@@ -176,6 +180,7 @@ const Form = {
 
     clearFields() {
         Form.description.value = ""
+        Form.category.value = ""
         Form.amount.value = ""
         Form.date.value = ""
     },
